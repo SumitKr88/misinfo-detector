@@ -36,10 +36,6 @@ Veritas AI is a powerful tool designed to detect AI-generated images and deepfak
 3.  **Modal Setup**
     To run the detection models on the cloud, you need to set up Modal:
 
-    ```bash
-    pip install modal
-    ```
-
     **Authentication**:
     1.  Create a new token:
         ```bash
