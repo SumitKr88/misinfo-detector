@@ -1,8 +1,8 @@
 # Veritas AI - Misinformation Detector
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
-![Modal][AI](https://img.shields.io/badge/Modal-Cloud-green?style=for-the-badge)
+![Modal](https://img.shields.io/badge/Modal-Cloud-green?style=for-the-badge)
 ![PyTorch](https://img.shields.io/badge/pytorch-grey?logo=pytorch)
 
 Veritas AI is a powerful tool designed to detect AI-generated images and deepfakes. It combines state-of-the-art AI models with digital forensics (Metadata analysis, Frequency domain analysis) to provide a comprehensive credibility score.
