@@ -47,7 +47,6 @@ backend/dataset/real/*
 !backend/dataset/real/.gitkeep
 backend/dataset/fake/*
 !backend/dataset/fake/.gitkeep
-backend/dataset/evaluation_report.html
 backend/dataset/evaluation_report.json
 
 # Modal
