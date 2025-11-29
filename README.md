@@ -48,14 +48,10 @@ Veritas AI is a powerful tool designed to detect AI-generated images and deepfak
         This will open your browser to authenticate.
     2.  Configure your local client:
         ```bash
-        modal setup
+        modal deploy backend/modal_app.py
         ```
+        This will deploy the app to Modal (now you can run the modal execution from cloud)
 
-    **Deployment (Optional)**:
-    If you want to deploy the app permanently to Modal (instead of just running it ephemerally via the backend):
-    ```bash
-    modal deploy backend/modal_app.py
-    ```
 
 ## Configuration
 
