@@ -100,6 +100,9 @@ To test the accuracy of the detection models locally (without deploying to Modal
     ```
     This will generate a report showing Accuracy, Precision, Recall, and a list of False Positives/Negatives.
 
+    Evaluation report Sample.
+<img width="711" height="844" alt="Screenshot 2025-11-29 at 11 02 39 PM" src="https://github.com/user-attachments/assets/83184e1d-cb93-4e39-a455-eb3bbfe36eb8" />
+
 ## Project Structure
 
 ```
