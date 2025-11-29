@@ -1,0 +1,132 @@
+# Veritas AI - Misinformation Detector
+
+Veritas AI is a powerful tool designed to detect AI-generated images and deepfakes. It combines state-of-the-art AI models with digital forensics (Metadata analysis, Frequency domain analysis) to provide a comprehensive credibility score.
+
+## Features
+
+-   **Hybrid Analysis**: Uses an ensemble of AI models (HuggingFace Transformers) and traditional digital forensics.
+-   **Modal Cloud Integration**: Offloads heavy AI inference to Modal's serverless GPU infrastructure.
+-   **Real-time Analysis**: Fast and efficient detection pipeline.
+-   **Detailed Reports**: Provides granular details on why an image was flagged (e.g., "Synthetic frequency patterns", "Missing metadata").
+
+## Prerequisites
+
+-   **Python 3.9+**
+-   **Node.js** (Optional, for advanced frontend serving)
+-   **Modal Account**: Sign up at [modal.com](https://modal.com)
+-   **AWS S3 Bucket**: For storing uploaded media.
+
+## Installation
+
+1.  **Clone the Repository**
+    ```bash
+    git clone <repository-url>
+    cd misinfo-detector
+    ```
+
+2.  **Backend Setup**
+    ```bash
+    cd backend
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    pip install python-dotenv
+    ```
+
+3.  **Modal Setup**
+    To run the detection models on the cloud, you need to set up Modal:
+
+    ```bash
+    pip install modal
+    ```
+
+    **Authentication**:
+    1.  Create a new token:
+        ```bash
+        modal token new
+        ```
+        This will open your browser to authenticate.
+    2.  Configure your local client:
+        ```bash
+        modal setup
+        ```
+
+    **Deployment (Optional)**:
+    If you want to deploy the app permanently to Modal (instead of just running it ephemerally via the backend):
+    ```bash
+    modal deploy backend/modal_app.py
+    ```
+
+## Configuration
+
+Create a `.env` file in the project root (`/misinfo-detector/.env`) with your AWS credentials:
+
+```env
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+AWS_BUCKET_NAME=your_bucket_name
+AWS_REGION=us-east-1
+```
+
+## Running the Application
+
+### 1. Start the Backend Server
+**Important**: Run this command from the **project root** directory, not inside the `backend` folder.
+
+```bash
+# From project root
+backend/venv/bin/python -m uvicorn backend.main:app --reload --port 8000
+```
+
+### 2. Run the Frontend
+Since the frontend is a simple HTML/JS application, you can open `frontend/index.html` directly in your browser, or serve it using a simple HTTP server:
+
+```bash
+# From project root
+python -m http.server 4000 --directory frontend
+```
+Then visit `http://localhost:4000`.
+
+## Running Local Evaluation
+
+To test the accuracy of the detection models locally (without deploying to Modal), we have provided an evaluation script.
+
+1.  **Install Local Dependencies**
+    Running the models locally requires heavy libraries (PyTorch, Transformers) which are not needed for the lightweight API server.
+    ```bash
+    backend/venv/bin/pip install -r backend/requirements-local.txt
+    ```
+
+2.  **Prepare Dataset**
+    Place your test images in the following directories:
+    -   `backend/dataset/real/`: Real images.
+    -   `backend/dataset/fake/`: AI-generated images.
+
+3.  **Run Evaluation**
+    ```bash
+    backend/venv/bin/python backend/evaluate.py
+    ```
+    This will generate a report showing Accuracy, Precision, Recall, and a list of False Positives/Negatives.
+
+## Project Structure
+
+```
+misinfo-detector/
+├── backend/
+│   ├── main.py                 # FastAPI Backend Server
+│   ├── modal_app.py            # Modal Cloud Application
+│   ├── detector_logic.py       # Core Detection Logic (Shared)
+│   ├── evaluate.py             # Local Evaluation Script
+│   ├── requirements.txt        # Server Dependencies
+│   ├── requirements-local.txt  # Local ML Dependencies
+│   └── dataset/                # Test Data
+├── frontend/
+│   └── index.html              # Frontend UI
+└── .env                        # Environment Variables
+```
+
+## Troubleshooting
+
+-   **ModuleNotFoundError: No module named 'backend'**: Make sure you run the uvicorn command from the project root.
+-   **CORS Errors**: Ensure the backend is running and the `.env` file is correctly loaded.
+-   **Modal Errors**: Ensure you have authenticated with `modal setup` and that `detector_logic.py` is correctly mounted (handled automatically in the code).
