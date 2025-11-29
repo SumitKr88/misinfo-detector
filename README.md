@@ -79,7 +79,19 @@ python -m http.server 4000
 ```
 Then visit `http://localhost:4000`.
 
-## Running Local Evaluation
+### 3. Load frontend at http://localhost:4000 , Upload the image/video and Analyse
+Media file will be uploaded to S3, and Modal will read the uploaded assest in S3 and apply the algorithm and share the result in UI.
+<img width="487" height="358" alt="Screenshot 2025-11-29 at 11 10 20 PM" src="https://github.com/user-attachments/assets/a8f8aef6-ed90-4399-8a17-0278ec37b4c2" />
+
+
+### 4. Final Result
+After evaluation, final result based on modal execution should reflect in UI.
+Sample screenshot:
+<img width="933" height="685" alt="Screenshot 2025-11-24 at 6 12 08 PM" src="https://github.com/user-attachments/assets/a26c8cb3-d6bc-462a-848e-07469882da2b" />
+<img width="458" height="726" alt="Screenshot 2025-11-29 at 7 43 05 PM" src="https://github.com/user-attachments/assets/60dbf7eb-0921-4372-8404-738756801463" />
+
+
+## Running Local Evaluation (Optional)
 
 To test the accuracy of the detection models locally (without deploying to Modal), we have provided an evaluation script.
 
