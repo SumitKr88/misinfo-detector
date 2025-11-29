@@ -75,7 +75,7 @@ Since the frontend is a simple HTML/JS application, you can open `frontend/index
 
 ```bash
 # From project root
-python -m http.server 4000 --directory frontend
+python -m http.server 4000
 ```
 Then visit `http://localhost:4000`.
 
