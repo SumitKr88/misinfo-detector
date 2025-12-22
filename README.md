@@ -14,6 +14,15 @@ Veritas AI is a powerful tool designed to detect AI-generated images and deepfak
 -   **Real-time Analysis**: Fast and efficient detection pipeline.
 -   **Detailed Reports**: Provides granular details on why an image was flagged (e.g., "Synthetic frequency patterns", "Missing metadata").
 
+## Architecture Abstract
+
+The **Veritas AI** architecture is designed for scalability and efficiency by decoupling the lightweight backend from the heavy AI processing.
+
+*   **Frontend (User)**: Uploads files directly to S3 (via presigned URLs) to avoid bottling the backend.
+*   **FastAPI Backend**: Acts as a control plane. It generates secure upload credentials and triggers remote jobs on Modal.
+*   **AWS S3**: Serves as the central storage for media files, accessible by both the User and the GPU workers.
+*   **Modal.com**: Provides serverless GPU infrastructure. It spins up containers on demand to run the **DeepfakeDetectorLogic** (AI Ensemble + Forensic Analysis) and shuts them down immediately after processing.
+
 ## Prerequisites
 
 -   **Python 3.9+**
