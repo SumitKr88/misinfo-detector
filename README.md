@@ -23,6 +23,9 @@ The **Veritas AI** architecture is designed for scalability and efficiency by de
 *   **AWS S3**: Serves as the central storage for media files, accessible by both the User and the GPU workers.
 *   **Modal.com**: Provides serverless GPU infrastructure. It spins up containers on demand to run the **DeepfakeDetectorLogic** (AI Ensemble + Forensic Analysis) and shuts them down immediately after processing.
 
+<img width="5940" height="4545" alt="Live Scoreboard Event-2025-12-22-044505" src="https://github.com/user-attachments/assets/5d5e1e15-7536-46e8-87af-c79c6955834d" />
+
+
 ## Prerequisites
 
 -   **Python 3.9+**
