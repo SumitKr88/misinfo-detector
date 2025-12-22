@@ -155,6 +155,20 @@ misinfo-detector/
 -   **CORS Errors**: Ensure the backend is running and the `.env` file is correctly loaded.
 -   **Modal Errors**: Ensure you have authenticated with `modal setup` and that `detector_logic.py` is correctly mounted (handled automatically in the code).
 
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
 ## Support
 
 If you find this project useful, please give it a **Star ⭐️** and **Share** it with others!
